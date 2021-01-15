@@ -1,0 +1,4 @@
+{
+  "*.tsx": ["standard --fix"],
+  "*.ts": ["standard --fix"]
+}
