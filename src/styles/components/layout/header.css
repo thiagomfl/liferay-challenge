@@ -1,0 +1,34 @@
+.header {
+  width: 100%;
+  height: 6rem;
+  padding-left: 1rem;
+  background-color: #fff;
+
+  -webkit-box-shadow: 7px 6px 23px -21px rgba(0,0,0,0.75);
+  -moz-box-shadow: 7px 6px 23px -21px rgba(0,0,0,0.75);
+  box-shadow: 7px 6px 23px -21px rgba(0,0,0,0.75);
+  
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+}
+
+.header input {
+  border: none;
+  outline: none;
+}
+
+.header input.username {
+  padding-top: .5rem;
+  font-size: 1.5rem;
+}
+
+.header input.username::placeholder {
+  color: black;
+}
+
+.header input.repository-name {
+  margin-top: -1rem;
+  font-size: .9rem;
+  color: grey;
+}

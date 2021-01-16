@@ -1,12 +1,13 @@
 import React from 'react'
+import Routes from './Routes'
 
-import './App.css'
+import './styles/global.css'
 
 function App () {
   return (
-    <div>
-      <h1>Hello!</h1>
-    </div>
+    <>
+      <Routes />
+    </>
   )
 }
 
