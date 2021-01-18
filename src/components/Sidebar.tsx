@@ -1,13 +1,26 @@
 import React from 'react'
+import { useQuery, gql } from '@apollo/client'
 
-import '../../styles/components/layout/sidebar.css'
+import '../styles/components/sidebar.css'
 
-function Sidebar () {
+function Sidebar (props: any) {
+  const { username } = props
+  const { data } = useQuery(FETCH_GITHUB_PROFILE, { variables: { username } })
+  
   return (
     <div className='sidebar'>
-      <img src='https://avatars2.githubusercontent.com/u/33002497?s=460&u=4d54044f7206f0feb368973eb1adf7c1545a1e10&v=4' alt='Whatever' />
+      {console.log('user: ' + data)}
+      <img src={data ? data.user.avatarUrl : 'https://via.placeholder.com/150'} alt='profile' />
     </div>
   )
 }
+
+const FETCH_GITHUB_PROFILE = gql`
+  query getUserProfile($username: String!) {
+    user(login: $username) {
+      avatarUrl
+    }
+  }
+`
 
 export default Sidebar

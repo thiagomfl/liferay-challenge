@@ -2,14 +2,14 @@ import React, { useEffect, useState } from 'react'
 import { useQuery } from '@apollo/client'
 
 import Sidebar from '../components/Sidebar'
-import { FETCH_GITHUB_PROFILE, FETCH_GITHUB_REPOSITORY } from '../utils/graphql'
+import { FETCH_GITHUB_REPOSITORY } from '../utils/graphql'
 
 import '../styles/pages/dashboard.css'
 
 function Dashboard () {
-  const [values, setValues] = useState({ username: 'thienry', repository: 'gfinder' })
+  const [values, setValues] = useState({ username: '', repository: '' })
   const { username, repository } = values
-  const { loading, data } = useQuery(FETCH_GITHUB_REPOSITORY, { variables: { repository, username } })
+  const { data } = useQuery(FETCH_GITHUB_REPOSITORY, { variables: { repository, username } })
   
   function handleChange (event: any)  {
     setValues({ ...values, [event.target.name]: event.target.value })
@@ -22,9 +22,9 @@ function Dashboard () {
 
   return (
     <div className='dashboard'>
-      <Sidebar />
+      <Sidebar username={username} />
+      {console.log(data)}
       <header className='header'>
-        {!loading ? console.log(data) : loading}
         <input
           type='text'
           name='username'
